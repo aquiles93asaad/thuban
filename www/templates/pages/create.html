@@ -1,0 +1,77 @@
+<ion-view cache-view="false" hide-back-button="true">
+    <ion-content class="content-container">
+        <div class="content-header">
+            <h3>Alta de Documentos</h3>
+        </div>
+
+        <form class="custom-form">
+            <select my-select2 ng-model="create.chosenDocumentClassViewId" ng-change="loadFields()" select-options="docClassesViews" min-results-for-search="20" place-holder="Elige una clase documental" style="width: 100%">
+                <option></option>
+            </select>
+            <div class="checkbox clearfix" ng-if="classFields">
+                <label>
+                    <span>No limpiar campos</span>
+                    <input type="checkbox" ng-model="options.keepValues">
+                </label>
+            </div>
+            <div class="fields-container list" ng-if="classFields">
+                <div class="field-container clearfix" ng-repeat="field in classFields">
+                    <span class="full">{{field.label}}</span>
+                    <div class="item item-input" ng-class="{'obligatory': field.visibility == 'mandatory'}" ng-if="field.multivalued != null">
+                        <div class="relative-parent">
+                            <button class="full fake-select" type="button" ng-click="populateSelectField($event, field, $index)"></button>
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <label class="item item-input item-stacked-label" ng-class="{'obligatory': field.visibility == 'mandatory'}" ng-if="field.multivalued == null">
+                        <input class="full" ng-if="field.dataType == 'string'" type="text" ng-model="field.value" ng-name="field.id" ng-max="field.maxLength" ng-keypress="closeKeyboard($event)" ng-keydown="closeKeyboard($event)" ng-blur="searchAllCharacter(field.id)">
+                        <input class="full" ng-if="field.dataType == 'integer'" type="number" ng-model="field.value" ng-name="field.id" ng-keypress="closeKeyboard($event)" ng-keydown="closeKeyboard($event)">
+                        <input class="full" ng-if="field.dataType == 'decimal'" type="number" ng-model="field.value" ng-name="field.id" ng-pattern="/^[0-9]+([,.][0-9]+)?$/" ng-keypress="closeKeyboard($event)" ng-keydown="closeKeyboard($event)">
+                        <div class="checkbox clearfix" ng-if="field.dataType == 'boolean'">
+                            <label>
+                                <input type="checkbox" ng-model="field.value" ng-name="field.id">
+                            </label>
+                        </div>
+                        <div class="relative-parent" ng-if="field.dataType == 'date'">
+                            <input class="full" type="date" ng-model="field.value" ng-name="field.id">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="resource-container" ng-if="classFields">
+                <span>Adjuntar archivo</span>
+                <div class="button-container create-button-container" ng-if="!isIOS">
+                    <button class="gradient-bg-button" ng-click="chooseFile()">
+                        Desde Carpetas
+                        <i class="fa fa-folder" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="button-container create-button-container">
+                    <button class="gradient-bg-button" ng-click="takePicture()">
+                        Desde Cámara
+                        <i class="fa fa-camera" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="image-container" ng-show="resource.showImage">
+                    <img id="resource-image">
+                </div>
+                <div class="resource-info clearfix" ng-show="resource.showName">
+                    <div class="resource-icon">
+                        <!-- <i aria-hidden="true" resource-icon></i> -->
+                        <img aria-hidden="true" resource-icon type="image"></i>
+                    </div>
+                    <span>Nombre: <strong>{{resource.name}}</strong></span>
+                    <span>Tamaño: <strong>{{resource.size | number:2 }} KB</strong></span>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+    <div class="floating-button-container gradient-bg-button" ng-show="classFields">
+        <button class="floating-button" ng-click="createDocument()">
+            <!-- <i class="fa fa-plus" aria-hidden="true"></i> -->
+            <img ng-src="img/icons/check-icon.png">
+        </button>
+    </div>
+</ion-view>

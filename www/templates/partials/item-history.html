@@ -1,0 +1,23 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-stable">
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeHistoryModal()">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <h1 class="title">Historia</h1>
+
+    </ion-header-bar>
+    <ion-content class="content-container no-padding">
+        <ion-list class="items-list">
+            <ion-item class="list-item full" ng-repeat="item in history" item-render-buffer="">
+                <div class="name">
+                    Fecha: {{ item.date | date: 'dd/MM/yyyy' }} - {{ item.time }}<br>
+                    Evento: {{ item.desc | capitalize: true }}<br>
+                    Usuario: {{ item.user | capitalize }}
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-modal-view>

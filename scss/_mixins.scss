@@ -1,0 +1,103 @@
+@mixin custom-transition($property, $time, $timingFunction) {
+    -webkit-transition: $property $time $timingFunction;
+       -moz-transition: $property $time $timingFunction;
+        -ms-transition: $property $time $timingFunction;
+         -o-transition: $property $time $timingFunction;
+            transition: $property $time $timingFunction;
+}
+
+@mixin vertical-translate($value) {
+    -webkit-transform: translateY($value);
+       -moz-transform: translateY($value);
+        -ms-transform: translateY($value);
+         -o-transform: translateY($value);
+            transform: translateY($value);
+}
+
+@mixin horizontal-translate($value) {
+    -webkit-transform: translateX($value);
+       -moz-transform: translateX($value);
+        -ms-transform: translateX($value);
+         -o-transform: translateX($value);
+            transform: translateX($value);
+}
+
+@mixin translate($Xvalue, $Yvalue) {
+    -webkit-transform: translate($Xvalue, $Yvalue);
+       -moz-transform: translate($Xvalue, $Yvalue);
+        -ms-transform: translate($Xvalue, $Yvalue);
+         -o-transform: translate($Xvalue, $Yvalue);
+            transform: translate($Xvalue, $Yvalue);
+}
+
+@mixin translate3d($Xvalue, $Yvalue, $Zvalue) {
+    -webkit-transform: translate3d($Xvalue, $Yvalue, $Zvalue);
+       -moz-transform: translate3d($Xvalue, $Yvalue, $Zvalue);
+        -ms-transform: translate3d($Xvalue, $Yvalue, $Zvalue);
+         -o-transform: translate3d($Xvalue, $Yvalue, $Zvalue);
+            transform: translate3d($Xvalue, $Yvalue, $Zvalue);
+}
+
+@mixin translate3d-forced($Xvalue, $Yvalue, $Zvalue) {
+    -webkit-transform: translate3d($Xvalue, $Yvalue, $Zvalue) !important;
+       -moz-transform: translate3d($Xvalue, $Yvalue, $Zvalue) !important;
+        -ms-transform: translate3d($Xvalue, $Yvalue, $Zvalue) !important;
+         -o-transform: translate3d($Xvalue, $Yvalue, $Zvalue) !important;
+            transform: translate3d($Xvalue, $Yvalue, $Zvalue) !important;
+}
+
+@mixin vertical-scale($value) {
+    -webkit-transform: scaleY($value);
+       -moz-transform: scaleY($value);
+        -ms-transform: scaleY($value);
+         -o-transform: scaleY($value);
+            transform: scaleY($value);
+}
+
+@mixin horizontal-scale($value) {
+    -webkit-transform: scaleX($value);
+       -moz-transform: scaleX($value);
+        -ms-transform: scaleX($value);
+         -o-transform: scaleX($value);
+            transform: scaleX($value);
+}
+
+@mixin scale($Xvalue, $Yvalue) {
+    -webkit-transform: scale($Xvalue, $Yvalue);
+       -moz-transform: scale($Xvalue, $Yvalue);
+        -ms-transform: scale($Xvalue, $Yvalue);
+         -o-transform: scale($Xvalue, $Yvalue);
+            transform: scale($Xvalue, $Yvalue);
+}
+
+@mixin scaleY($value) {
+    -webkit-transform: scaleY($value);
+       -moz-transform: scaleY($value);
+        -ms-transform: scaleY($value);
+         -o-transform: scaleY($value);
+            transform: scaleY($value);
+}
+
+@mixin rotate($angle) {
+    -webkit-transform: rotate($angle);
+       -moz-transform: rotate($angle);
+        -ms-transform: rotate($angle);
+         -o-transform: rotate($angle);
+            transform: rotate($angle);
+}
+
+@mixin linear-gradient-2-colors($direction, $lgDirection, $firstColor, $startPercent, $secondColor, $secondPercent) {
+    background: -moz-linear-gradient($direction, $firstColor $startPercent, $secondColor $secondPercent);
+    background: -webkit-linear-gradient($direction, $firstColor $startPercent, $secondColor $secondPercent);
+    background: -o-linear-gradient($direction, $firstColor $startPercent, $secondColor $secondPercent);
+    background: -ms-linear-gradient($direction, $firstColor $startPercent, $secondColor $secondPercent);
+    background: linear-gradient($lgDirection, $firstColor $startPercent, $secondColor $secondPercent);
+}
+
+@mixin linear-gradient-3-colors($direction, $lgDirection, $firstColor, $startPercent, $secondColor, $secondPercent, $thirdColor, $thirdPercent) {
+    background: -moz-linear-gradient($direction, $firstColor $startPercent, $secondColor $secondPercent, $thirdColor $thirdPercent);
+    background: -webkit-linear-gradient($direction, $firstColor $startPercent, $secondColor $secondPercent, $thirdColor $thirdPercent);
+    background: -o-linear-gradient($direction, $firstColor $startPercent, $secondColor $secondPercent, $thirdColor $thirdPercent);
+    background: -ms-linear-gradient($direction, $firstColor $startPercent, $secondColor $secondPercent, $thirdColor $thirdPercent);
+    background: linear-gradient($lgDirection, $firstColor $startPercent, $secondColor $secondPercent, $thirdColor $thirdPercent);
+}

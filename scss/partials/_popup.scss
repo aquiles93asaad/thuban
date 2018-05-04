@@ -1,0 +1,59 @@
+body {
+    .popup-container {
+        .popup {
+            width: 300px;
+            height: 150px;
+            background-color: rgba(255, 255, 255, 0.9);
+            @include linear-gradient-3-colors(top, to bottom, #e9e9e9, 0%, #D9D9D9, 50%, #c9c9c9, 100%);
+            background: -webkit-gradient(left top, left bottom, color-stop(0%, #e9e9e9), color-stop(50%, #D9D9D9), color-stop(100%, #c9c9c9));
+            box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.37);
+            border-radius: $distance-2x-s;
+
+            .popup-head,
+            .popup-buttons {
+                @extend .relative-parent;
+                height: 50%;
+            }
+
+            .popup-head {
+                padding: 0;
+                border: none;
+
+                .popup-sub-title {
+                    @extend .absolute-centered;
+                    width: 100%;
+                    margin: 0;
+                    padding: $distance-x-s;
+                    font-size: $font-size-l;
+                    font-weight: $font-weight-bold;
+                }
+            }
+
+            .popup-buttons {
+                button {
+                    @extend .vertical-centered;
+                    @include linear-gradient-3-colors(top, to bottom, #f0f0f0, 0%, #d0d0d0, 80%, #aaa, 100%);
+                    background: -webkit-gradient(left top, left bottom, color-stop(0%, #f0f0f0), color-stop(80%, #d0d0d0), color-stop(100%, #aaa));
+                    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.37);
+                    border-radius: $distance-2x-s;
+                    padding: $distance-x-s;
+                    color: $dark;
+                    font-size: $font-size-x-l;
+                    font-weight: $font-weight-regular;
+                    height: $distance-3x-l;
+                    min-height: 0;
+                    border: none;
+                    min-width: 40%;
+
+                    &.button-default {
+                        left: $distance-x-s;
+                    }
+
+                    &.button-positive {
+                        right: $distance-x-s;
+                    }
+                }
+            }
+        }
+    }
+}

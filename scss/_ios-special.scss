@@ -1,0 +1,48 @@
+body.platform-ios {
+	&.platform-cordova {
+		.scroll-content {
+
+			&.has-header {
+				top: 50px;
+			}
+
+			.scroll {
+				height: 100%;
+	    		position: static;
+			}
+		}
+
+		.bar-header {
+  			height: 50px !important;
+
+  			.header-item,
+  			.buttons,
+  			.title {
+  				margin-top: 0px !important;
+  			}
+  		}
+
+  		form.custom-form {
+  			.item.item-input {
+  				select {
+  					&.ios-select {
+  						height: 30px;
+						line-height: 20px;
+						vertical-align: middle;
+						font-size: 16px;
+						background-color: white;
+						padding: 0 11px !important;
+						width: 100%;
+						-webkit-appearance: none;
+  					}
+  				}
+  			}
+  		}
+
+  		.select2-container {
+  			.select2-dropdown {
+  				z-index: 100;
+  			}
+  		}
+	}
+}

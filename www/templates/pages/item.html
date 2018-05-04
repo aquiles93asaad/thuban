@@ -1,0 +1,91 @@
+<ion-view cache-view="false">
+    <div class="item-actions-header clearfix">
+        <div class="button-container col-xs-3">
+            <button class="icon-container small-button round-button gradient-bg-button relative-parent" ng-class="{'red-button': actualItem.notes.length != 0}" ng-click="getNotes()">
+                <img class="absolute-centered" src="img/icons/notes-icon.png">
+            </button>
+        </div>
+        <div class="button-container col-xs-3">
+            <button class="icon-container small-button round-button gradient-bg-button relative-parent" ng-click="openHistoryModal()">
+                <img class="absolute-centered" src="img/icons/history-icon.png">
+            </button>
+        </div>
+        <div class="button-container col-xs-3">
+            <button class="icon-container small-button round-button gradient-bg-button relative-parent save-button" ng-class="{'red-button': changesMade || resource.isAdded}" ng-click="updateDocument()" ng-disabled="!document.locked">
+                <img class="absolute-centered" src="img/icons/save-icon.png">
+            </button>
+        </div>
+        <div class="button-container col-xs-3">
+            <button class="icon-container small-button round-button gradient-bg-button relative-parent lock-button" ng-class="{'locked red-button': document.locked }" ng-click="lockDocument()">
+                <img class="lock-icon absolute-centered" src="img/icons/lock-icon.png">
+                <img class="unlock-icon absolute-centered" src="img/icons/unlock-icon.png">
+            </button>
+        </div>
+    </div>
+    <ion-content class="content-container">
+        <form class="custom-form item-form">
+            <label class="item item-input item-stacked-label">
+                <span class="input-label full big-text">Clase Documental</span>
+                <input class="full" type="text" ng-model="documentClassAlias" disabled>
+            </label>
+
+            <div class="fields-container list" ng-if="document.fields">
+                <div class="field-container clearfix" ng-repeat="field in document.fields">
+                    <span class="input-label full">{{field.label}}</span>
+                    <div class="item item-input" ng-class="{'obligatory': field.visibility == 'mandatory'}" ng-if="field.multivalued != null">
+                        <div class="relative-parent">
+                            <button class="full fake-select" type="button" ng-click="populateSelectField($event, field, $index)" ng-disabled="!document.locked">{{field.value}}</button>
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <label class="item item-input item-stacked-label" ng-class="{'obligatory': field.visibility == 'mandatory'}" ng-if="field.multivalued == null">
+                        <input class="full" ng-if="field.dataType == 'string'" id="{{field.key}}" type="text" ng-model="field.value" ng-name="field.key" ng-max="field.maxLength" ng-keypress="closeKeyboard($event)" ng-keydown="closeKeyboard($event)" ng-disabled="!document.locked">
+                        <input class="full" ng-if="field.dataType == 'date'" id="{{field.key}}" type="date" ng-model="field.value" ng-name="field.key" ng-disabled="!document.locked">
+                        <input class="full" ng-if="field.dataType == 'integer'" id="{{field.key}}" type="number" ng-model="field.value" ng-name="field.key" ng-keypress="closeKeyboard($event)" ng-keydown="closeKeyboard($event)" ng-disabled="!document.locked">
+                        <input class="full" ng-if="field.dataType == 'decimal'" id="{{field.key}}" type="number" ng-model="field.value" ng-name="field.key" ng-pattern="/^[0-9]+([,.][0-9]+)?$/" ng-keypress="closeKeyboard($event)" ng-keydown="closeKeyboard($event)" ng-disabled="!document.locked">
+                        <div class="checkbox clearfix" ng-if="field.dataType == 'boolean'">
+                            <label>
+                                <input id="{{field.key}}" type="checkbox" ng-model="field.value" ng-checked="field.value == 'true'" ng-name="field.key" ng-disabled="!document.locked">
+                            </label>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="resource-container">
+                <h4>Recurso asociado</h4>
+                <div class="resource-actions clearfix">
+                    <div class="button-container col-xs-3" ng-if="document.hasResource">
+	                    <button class="icon-container gradient-bg-button relative-parent" ng-click="showResource()">
+                            <img class="absolute-centered" src="img/icons/eye-icon.png">
+                        </button>
+	                </div>
+                    <div class="button-container col-xs-3" ng-if="document.hasResource">
+	                    <button class="icon-container gradient-bg-button relative-parent" ng-click="downloadResource()">
+                            <img class="absolute-centered" src="img/icons/download-icon.png">
+                        </button>
+	                </div>
+                    <div class="button-container col-xs-3" ng-if="document.hasResource">
+	                    <button class="icon-container gradient-bg-button relative-parent" ng-click="openAddResourceModal()" ng-disabled="!document.locked">
+                            <img class="absolute-centered" src="img/icons/edit-icon.png">
+                        </button>
+	                </div>
+                    <div class="button-container col-xs-3" ng-if="document.hasResource">
+	                    <button class="icon-container gradient-bg-button relative-parent" ng-click="deleteResource()" ng-disabled="!document.locked">
+                            <img class="absolute-centered" src="img/icons/trash-icon.png">
+                        </button>
+	                </div>
+                    <div class="message col-xs-12" ng-if="!document.hasResource">El doucmento no tiene recurso asociado.</div>
+                    <div class="button-container col-xs-3 top-margin" ng-if="!document.hasResource">
+                        <button class="icon-container gradient-bg-button relative-parent" ng-click="openAddResourceModal()" ng-disabled="!document.locked">
+                            <i class="fa fa-plus absolute-centered" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="message col-xs-12" ng-show="resource.isAdded">
+                        El recurso fue modificado. Guardar para confirmar esta acción.
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

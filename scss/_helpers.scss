@@ -1,0 +1,243 @@
+body {
+    .menu-content {
+        .view-container.menu-animated {
+            top: $distance-5x-l;
+            @include translate3d(0, 0, 0);
+        }
+    }
+
+    &.menu-open {
+        .menu-content.menu-animated {
+            @include translate3d-forced(0, 0, 0);
+        }
+    }
+
+    .bar.bar-footer {
+        background: none;
+        height: $distance-5x-l;
+
+        .title {
+            font-size: $font-size-l;
+            color: $secondary-color;
+            font-weight: $font-weight-light;
+            text-align: left;
+            height: $distance-5x-l;
+            margin: 0;
+            margin-left: $distance-m;
+        }
+    }
+
+    .menu {
+        .bar.bar-footer {
+            background-color: transparent;
+        }
+    }
+}
+
+.menu-content {
+    .scroll-content {
+        background-color: $grey;
+    }
+}
+
+.scroll-content {
+    &.overflow-scroll {
+        overflow-y: auto;
+    }
+
+    &.has-header {
+        top: $distance-5x-l;
+    }
+
+    .custom-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 11;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        @include custom-transition(width, 100ms, linear);
+    }
+
+    .list {
+        margin-top: $distance-2x-s;
+
+        .item-content {
+            &:focus,
+            &:active,
+            &:hover {
+                text-decoration: none;
+                color: $dark;
+                outline: none;
+            }
+        }
+    }
+}
+
+.relative-parent {
+    position: relative;
+}
+
+.vertical-centered {
+    position: absolute;
+    top: 50%;
+    @include vertical-translate(-50%);
+}
+
+.horizontal-centered {
+    position: absolute;
+    left: 50%;
+    @include horizontal-translate(-50%);
+}
+
+.absolute-centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include translate(-50%, -50%);
+
+    &.special {
+        @include translate(-50%, -60%);
+    }
+}
+
+img {
+    &.flipped-image {
+        @include horizontal-scale(-1);
+    }
+
+    &.centered-image {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    &.rotated {
+        @include rotate(90deg);
+    }
+}
+
+.image-container {
+    padding: 0 $distance-x-s;
+
+    &.top-margin {
+        margin-top: $distance-x-l;
+    }
+
+    &.relative-parent {
+        margin: 0 $distance-s;
+        padding: 0;
+    }
+
+    img {
+        max-width: 100%;
+    }
+}
+
+.gradient-bg-button {
+    @include linear-gradient-3-colors(top, to bottom, $main-color, 0%, $main-color-alternate, 50%, $main-color-alternate-2, 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, $main-color), color-stop(50%, $main-color-alternate), color-stop(100%, $main-color-alternate-2));
+    box-shadow: 1px 2px 5px 0.5px rgba(0,0,0,.26);
+}
+
+.button-container {
+    margin-bottom: $distance-x-s;
+
+    &.top-right-button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 0;
+    }
+
+    button {
+        border: none;
+        border-radius: $distance-2x-s;
+        padding: $distance-x-s;
+        width: 100%;
+        color: $light;
+        font-size: $font-size-l;
+
+        i {
+            font-size: $font-size-2x-l;
+            vertical-align: middle;
+        }
+
+        &.small-button {
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            margin: 0;
+
+            i {
+                font-size: $font-size-l;
+            }
+        }
+
+        &.round-button {
+            border-radius: 50%;
+        }
+
+        &.radius-button {
+            border-radius: $radius-px;
+        }
+
+        &.large-button {
+            height: $distance-5x-l;
+            line-height: $distance-l;
+        }
+
+        &.icon-container {
+            img {
+                max-width: 40%;
+                margin: 0 auto;
+            }
+        }
+
+        &.red-button {
+            @include linear-gradient-3-colors(top, to bottom, $assertive, 0%, $assertive, 50%, $assertive, 100%);
+            background: -webkit-gradient(left top, left bottom, color-stop(0%, $assertive), color-stop(50%, $assertive), color-stop(100%, $assertive));
+        }
+
+        &[disabled] {
+            @include linear-gradient-3-colors(top, to bottom, $disabled, 0%, $disabled-alternate, 50%, $disabled-alternate-2, 100%);
+            background: -webkit-gradient(left top, left bottom, color-stop(0%, $disabled), color-stop(50%, $disabled-alternate), color-stop(100%, $disabled-alternate-2));
+        }
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
+
+.floating-button-container {
+    position: fixed;
+    bottom: $distance-m;
+    right: $distance-m;
+    width: $distance-5x-l;
+    height: $distance-5x-l;
+    border-radius: 50%;
+    z-index: 100;
+
+    button.floating-button {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: $light;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+
+        i {
+            font-size: $font-size-2x-l;
+        }
+
+        img {
+            display: block;
+            width: 70%;
+            margin: 0 auto;
+        }
+    }
+}

@@ -1,0 +1,24 @@
+<ion-view cache-view="false">
+    <ion-content class="content-container no-padding">
+        <div class="content-header breadcrumbs" ng-if="items != undefined || items.length != 0">
+            <h3 ng-if="actualList.params.isTray">Bandeja WorkFlow: {{actualList.params.trayName}} ({{totalItemsCount}})</h3>
+            <h3 ng-if="!actualList.params.isTray">Cantidad de documentos: {{totalItemsCount}}</h3>
+        </div>
+        <ion-list class="items-list">
+            <ion-item class="list-item" ng-repeat="item in items" item-render-buffer="" ui-sref="app.item({documentId: item.id})">
+                <div class="resource-icon vertical-centered" ng-class="{'has-resource': item.hasResource}" ng-if="!isTrayList">
+                    <img aria-hidden="true" resource-icon  type="image" extension="{{item.resourceType}}" ng-if="item.hasResource"></i>
+                    <img aria-hidden="true" type="image" class="x-icon" ng-src="img/icons/x-icon.png" ng-if="!item.hasResource"></i>
+                </div>
+                <div class="name" ng-class="{'tray-item-name': isTrayList}">
+                    {{item.name}}
+                </div>
+                <i class="fa fa-chevron-right static-icon" aria-hidden="true"></i>
+            </ion-item>
+        </ion-list>
+        <div class="absolute-centered no-results-container" ng-if="items == undefined || items.length == 0">
+            <span>No hay resultados para su búsqueda</span>
+        </div>
+        <ion-infinite-scroll ng-if="moreItemsCanBeLoaded()" on-infinite="loadMoreItems()" distance="3%" immediate-check="false"></ion-infinite-scroll>
+    </ion-content>
+</ion-view>

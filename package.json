@@ -1,0 +1,56 @@
+{
+  "name": "thuban-mobile-app",
+  "version": "0.0.1",
+  "description": "Thuban es multiplatforma, integrable, confiable, usable, seguro, flexible, escalable",
+  "repository": {
+    "type": "svn",
+    "url": "http://svn.vivatia.com/SVN_VIVATIA/ThubanMobile"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "gulp": "^3.5.6",
+    "gulp-clean-css": "^3.7.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^3.1.0"
+  },
+  "dependencies": {
+    "cordova-android": "^6.2.3",
+    "cordova-ios": "^4.5.4",
+    "cordova-plugin-camera": "^2.4.1",
+    "cordova-plugin-compat": "^1.2.0",
+    "cordova-plugin-device": "^1.1.7",
+    "cordova-plugin-dialogs": "^1.3.4",
+    "cordova-plugin-document-contract": "^0.4.1",
+    "cordova-plugin-file": "^4.3.3",
+    "cordova-plugin-file-chooser-android": "^1.0.1",
+    "cordova-plugin-file-opener2": "^2.0.19",
+    "cordova-plugin-splashscreen": "^4.1.0",
+    "cordova-plugin-statusbar": "^2.3.0",
+    "cordova-plugin-whitelist": "^1.3.3",
+    "cordova-plugin-x-toast": "^2.6.0",
+    "io": "1.0.0",
+    "ionic-plugin-keyboard": "^2.2.1"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-whitelist": {},
+      "ionic-plugin-keyboard": {},
+      "cordova-plugin-x-toast": {},
+      "cordova-plugin-dialogs": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-file-opener2": {},
+      "cordova-plugin-compat": {},
+      "cordova-plugin-camera": {},
+      "com.megster.cordova.FileChooser": {},
+      "cordova-plugin-document-contract": {},
+      "cordova-plugin-file-chooser-android": {}
+    },
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  }
+}

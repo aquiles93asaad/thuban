@@ -1,0 +1,115 @@
+.content-container {
+    .items-list {
+        .list-item {
+            font-size: $font-size-x-l;
+            color: $dark;
+            border: none;
+            margin: 0;
+            overflow: visible;
+            background-color: transparent;
+            border-bottom: 1px solid #ccc;
+            padding: 0 $distance-m;
+
+            a {
+                white-space: normal;
+                padding: $distance-m $distance-s;
+                overflow: visible;
+                background-color: transparent;
+
+                &:after,
+                &:before {
+                    display: table;
+                    content: "";
+                    line-height: 0;
+                }
+
+                &:after {
+                    clear: both;
+                }
+            }
+
+            i.static-icon {
+                @extend .vertical-centered;
+                color: $main-color;
+                font-size: $font-size-3x-l;
+
+                &.fa-chevron-right {
+                    right: 0;
+                }
+            }
+
+            .resource-icon {
+                left: -8px;
+                width: 10%;
+                height: $distance-x-l;
+                background-color: transparent;
+                border-radius: $distance-2x-s;
+
+                img {
+                    display: block;
+                    width: 100%;
+                    max-width: 30px;
+
+                    &.x-icon {
+                        max-width: 20px;
+                        margin: 0 auto;
+                        margin-top: 5px;
+                    }
+                }
+
+                i {
+                    @extend .absolute-centered;
+                    color: $secondary-color;
+                    font-size: $font-size-x-l;
+                }
+            }
+
+            .name {
+                width: 93%;
+                float: right;
+
+                &.tray-item-name {
+                    width: 100%;
+                    float: left;
+                }
+            }
+
+            &.tray {
+                .resource-icon {
+                    text-align: center;
+                    line-height: $distance-x-l;
+                    color: $light;
+                    font-size: $font-size-l;
+                    font-weight: 600;
+                    left: 0;
+
+                    &.has-resource {
+                        background-color: $light-blue-1;
+                    }
+                }
+
+                .name {
+                    width: 90%;
+                }
+            }
+
+            &.full {
+                padding-top: $distance-x-s;
+                padding-bottom: $distance-x-s;
+
+                .name {
+                    width: 100%;
+                    float: none;
+                }
+            }
+        }
+    }
+
+    .no-results-container {
+        width: 100%;
+        text-align: center;
+        font-size: $font-size-x-l;
+        font-weight: bold;
+        color: $dark;
+    }
+}

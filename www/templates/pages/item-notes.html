@@ -1,0 +1,28 @@
+<ion-view cache-view="false">
+    <ion-content class="content-container no-padding">
+        <ion-list class="items-list">
+            <ion-item class="list-item full" ng-repeat="note in notes" item-render-buffer="" ng-click="openNoteModal(note.id)">
+                <div class="name">
+                    {{note.name}}
+                    Fecha: {{ note.date | date: 'dd/MM/yyyy' }} - {{ note.time }}<br>
+                    Título: {{ note.title }}<br>
+                    Usuario: {{ note.user | capitalize }}
+                </div>
+            </ion-item>
+        </ion-list>
+        <div class="absolute-centered no-results-container" ng-if="notes == undefined || notes == null || notes.length == 0">
+            <span>El documento no tiene notas registaradas</span>
+            <div class="button-container" ng-if="rights.add">
+                <button class="icon-container gradient-bg-button relative-parent" ng-click="openNoteModal()" style="max-width: 70px; height: 40px; padding: 0; margin-top: 20px;">
+                    <i class="fa fa-plus absolute-centered" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <ion-infinite-scroll ng-if="moreItemsCanBeLoaded()" on-infinite="loadMoreItems()" distance="3%" immediate-check="false"></ion-infinite-scroll>
+    </ion-content>
+    <div class="floating-button-container gradient-bg-button"ng-if="rights.add && notes != undefined && notes != null && notes.length != 0">
+        <button class="floating-button" ng-click="openNoteModal()">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+    </div>
+</ion-view>

@@ -1,0 +1,48 @@
+<ion-side-menus enable-menu-with-back-views="false">
+	<ion-side-menu-content>
+		<ion-nav-bar>
+			<ion-nav-back-button class="button-clear" ng-click="$ionicGoBack()"></ion-nav-back-button>
+
+			<ion-nav-buttons side="left">
+				<button class="button button-icon button-clear ion-navicon-round" menu-toggle="left" ng-click="toggleMenu($event)"></button>
+			</ion-nav-buttons>
+
+			<ion-nav-title>
+                <img ng-src="img/logo-white.png" ng-click="goToHomePage()">
+            </ion-nav-title>
+		</ion-nav-bar>
+
+		<ion-nav-view name="menuContent"></ion-nav-view>
+	</ion-side-menu-content>
+
+	<ion-side-menu side="left" width="275">
+		<ion-content>
+			<ion-list>
+				<ion-item menu-close menu-item class="menu-item" ui-sref="app.create" ng-show="menuAccessRights.create">
+                    <img class="image-icon" ng-src="img/icons/create-doc-icon.png">
+                    <span>Crear Documentos</span>
+                    <div class="thin-line"></div>
+                </ion-item>
+
+                <ion-item menu-close menu-item class="menu-item" ui-sref="app.search" ng-show="menuAccessRights.search">
+                    <img class="image-icon" ng-src="img/icons/search-doc-icon.png">
+                    <span>Buscar documentos</span>
+                    <div class="thin-line"></div>
+                </ion-item>
+
+                <ion-item menu-close menu-item class="menu-item" ui-sref="app.trays" ng-show="menuAccessRights.trays">
+                    <img class="image-icon" ng-src="img/icons/trays-white-icon.png">
+                    <span>Bandejas</span>
+                    <div class="thin-line"></div>
+                </ion-item>
+                <ion-item menu-close menu-item class="menu-item" ng-click="logOut()">
+                    <img class="image-icon" ng-src="img/icons/logout-icon.png">
+                    <span>Salir</span>
+                </ion-item>
+			</ion-list>
+		</ion-content>
+        <ion-footer-bar align-title="center">
+            <h1 class="title">Conectado como {{userName}}</h1>
+        </ion-footer-bar>
+	</ion-side-menu>
+</ion-side-menus>

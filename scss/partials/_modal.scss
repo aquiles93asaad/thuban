@@ -1,0 +1,15 @@
+body {
+    .modal {
+        .content-container {
+            background-color: $grey;
+            
+            &.no-padding {
+                padding: 0;
+            }
+        }
+    }
+
+    .modal-backdrop {
+        background-color: transparent;
+    }
+}

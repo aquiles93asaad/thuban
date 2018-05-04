@@ -1,0 +1,59 @@
+.login-content-page {
+    background-image: url(../img/background-blue.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+
+    .login-bg-container {
+        height: 100%;
+
+        .config-icon {
+            position: absolute;
+            top: $distance-m;
+            right: $distance-m;
+            max-width: $distance-x-l;
+            z-index: 100;
+        }
+
+        .login-bg-inner-container {
+            position: absolute;
+            top: 50%;
+            @include vertical-translate(-55%)
+            width: 100%;
+            padding: 0 $distance-m;
+
+            .logo-container {
+                padding: 0 $distance-s;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 40px;
+
+                img {
+                    max-width: 80%;
+                }
+            }
+
+            .button-container {
+                button {
+                    background-color: $light-grey;
+                    color: $blue;
+                    max-width: 75%;
+                    margin: 0 auto;
+                    display: block;
+                    margin-top: $distance-3x-l;
+                }
+            }
+        }
+
+        .company-container {
+            @extend .horizontal-centered;
+            bottom: $distance-5x-l;
+
+            img {
+                display: block;
+                max-width: 75%;
+                margin: 0 auto;
+            }
+        }
+    }
+}

@@ -1,0 +1,70 @@
+<ion-view hide-back-button="true">
+    <ion-content class="content-container">
+        <div class="content-header">
+            <h3>Búsqueda de Documentos</h3>
+        </div>
+
+        <form class="custom-form search-form">
+            <select my-select2 ng-model="search.chosenDocumentClassViewId" ng-change="loadFields()" select-options="docClassesViews" min-results-for-search="20" place-holder="Elige una clase documental" style="width: 100%">
+                <option></option>
+            </select>
+            <div class="or-criteria-container clearfix" ng-show="search.chosenDocumentClassViewId != null">
+                <label class="radio-inline">
+                    <input type="radio" ng-model="searchCriterias.orCriteria" ng-name="orCriteria" ng-value="false" /> Todos (AND)
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" ng-model="searchCriterias.orCriteria" ng-name="orCriteria" ng-value="true" /> Algunos (OR)
+                </label>
+            </div>
+            <div class="checkbox clearfix" ng-show="advancedSearch.exists">
+                <label>
+                    <span>Búsqueda avanzada</span>
+                    <input type="checkbox" ng-model="advancedSearch.show">
+                </label>
+            </div>
+            <div class="fields-container list" ng-if="classFields">
+                <div class="field-container clearfix" ng-repeat="field in classFields" ng-show="showField(field.searchIndex)">
+                    <span class="full">{{field.label}}</span>
+                    <label class="item item-input criteria-select">
+                        <select my-select2 class="my-select2 search-criteria" id="criteria_{{field.id}}" ng-model="searchCriterias.criterias[field.id]" select-options="searchOptions" min-results-for-search="Infinity" place-holder="''" dropdown-class="search-criteria" style="width: 100%" ng-if="!isIOS">
+                            <option></option>
+                        </select>
+
+                        <!-- <select class="ios-select" ng-model="searchCriterias.criterias[field.id]" id="criteria_{{field.id}}" ng-if="isIOS" ng-options="option as option.text for option in searchOptions track by option.id"> -->
+                        <select class="ios-select" ng-model="searchCriterias.criterias[field.id]" id="criteria_{{field.id}}" ng-if="isIOS">
+                            <option value="equals" selected="selected">=</option>
+                            <option ng-repeat="option in iosSearchOptions" ng-value="option.id">{{option.text}}</option>
+                        </select>
+                    </label>
+                    <div class="item item-input" ng-class="{'search-criteria': field.searchable}" ng-if="field.multivalued != null">
+                        <div class="relative-parent">
+                            <button class="full fake-select" type="button" ng-click="populateSelectField($event, field)"></button>
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <label class="item item-input" ng-class="{'search-criteria': field.searchable}" ng-if="field.multivalued == null">
+                        <input class="full" ng-if="field.dataType == 'string'" type="text" ng-model="searchCriterias.fields[field.id]" ng-name="field.id" ng-max="field.maxLength" ng-keypress="closeKeyboard($event)" ng-keydown="closeKeyboard($event)" ng-blur="searchAllCharacter(field.id)">
+                        <input class="full" ng-if="field.dataType == 'integer'" type="number" ng-model="searchCriterias.fields[field.id]" ng-name="field.id" ng-keypress="closeKeyboard($event)" ng-keydown="closeKeyboard($event)">
+                        <input class="full" ng-if="field.dataType == 'decimal'" type="number" ng-model="searchCriterias.fields[field.id]" ng-name="field.id" ng-pattern="/^[0-9]+([,.][0-9]+)?$/" ng-keypress="closeKeyboard($event)" ng-keydown="closeKeyboard($event)">
+                        <div class="relative-parent" ng-if="field.dataType == 'date'">
+                            <input class="full" type="date" ng-model="searchCriterias.fields[field.id]" ng-name="field.id">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </div>
+
+                        <div class="checkbox clearfix" ng-if="field.dataType == 'boolean'">
+                            <label>
+                                <input type="checkbox" ng-model="searchCriterias.fields[field.id]" ng-name="field.id">
+                            </label>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+    <div class="floating-button-container gradient-bg-button" ng-show="classFields">
+        <button class="floating-button" ng-click="searchDocuments()">
+            <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+            <img ng-src="img/icons/magnifying-glass-icon.png">
+        </button>
+    </div>
+</ion-view>

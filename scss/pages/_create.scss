@@ -1,0 +1,53 @@
+body {
+    .content-container {
+        form.custom-form {
+            .item.item-input {
+                &.obligatory {
+                    input,
+                    select,
+                    .fake-select,
+                    .select2-selection {
+                        background-color: $obligatory-criteria;
+                    }
+                }
+            }
+        }
+
+        .resource-container {
+            span {
+                font-size: $font-size-l;
+                display: block;
+                padding-bottom: $distance-2x-s;
+                color: $main-color-alternate-2;
+            }
+
+            .image-container {
+                padding: 0;
+            }
+
+            .resource-icon {
+                margin: $distance-x-s 0;
+                text-align: left;
+
+                i {
+                    color: $main-color;
+                    font-size: $font-size-17x-l;
+                }
+
+                img {
+                    max-width: 50px;
+                }
+            }
+        }
+
+        .create-button-container {
+            width: 75%;
+            align-content: flex-start;
+        }
+
+        .fields-container {
+            margin-top: $distance-s;
+            margin-bottom: 0;
+        }
+    }
+}

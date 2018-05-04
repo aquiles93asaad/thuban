@@ -1,0 +1,33 @@
+.scroll-content {
+    &.content-container {
+        padding: 0 $distance-m;
+        background-image: url(../img/background-white.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        &.no-padding {
+            padding: 0;
+        }
+
+        &.trays-content {
+            padding-left: 12px;
+        }
+
+        .content-header {
+            margin: $distance-m 0;
+            text-align: center;
+            margin-bottom: 0;
+
+            &.breadcrumbs {
+                text-align: left;
+                padding: $distance-s $distance-m 0 $distance-s;
+                margin: 0;
+
+                h3 {
+                    font-size: $font-size-l;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,73 @@
+.menu {
+    top: 50px;
+    @include custom-transition(transform, 400ms, ease);
+    @include translate3d(-320px, 0, 0);
+    z-index: 100 !important;
+    min-height: 1px;
+    @include linear-gradient-3-colors(top, to bottom, $main-color-alternate-2, 0%, $main-color-alternate, 50%, $main-color, 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, $main-color-alternate-2), color-stop(50%, $main-color-alternate), color-stop(100%, $main-color));
+
+    .scroll-content {
+        .item {
+            background-color: transparent;
+            border: none;
+            color: $secondary-color;
+            padding: 0;
+            font-size: $font-size-l;
+            margin: 0;
+            font-weight: $font-weight-light;
+
+            span {
+                padding: $distance-x-l $distance-m;
+                padding-left: 75px;
+                display: block;
+            }
+
+            img {
+                @extend .vertical-centered;
+                left: $distance-m;
+                max-width: $distance-x-l;
+            }
+
+            .fa {
+                @extend .vertical-centered;
+                left: $distance-m;
+                font-size: $font-size-5x-l;
+
+                &.on-top {
+                    font-size: $font-size-m;
+                    left: $distance-l;
+                }
+            }
+
+            .thin-line {
+                height: 1px;
+                width: 30%;
+                margin-left: $distance-m;
+                background-color: $secondary-color;
+            }
+
+            &.chosen {
+                @include linear-gradient-3-colors(top, to bottom, $secondary-color, 0%, $secondary-color-alternate, 50%, $secondary-color-alternate-2, 100%);
+                background: -webkit-gradient(left top, left bottom, color-stop(0%, $secondary-color), color-stop(50%, $secondary-color-alternate), color-stop(100%, $secondary-color-alternate-2));
+                border-left: $distance-x-s solid $main-color;
+                color: $main-color;
+
+                span {
+                    padding-left: 85px;
+                    font-weight: $font-weight-regular;
+                }
+
+                .fa {
+                    font-weight: $font-weight-bold;
+                }
+            }
+
+            a {
+                border: none;
+                background-color: transparent;
+                padding: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-stable">
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeNoteModal()">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <h1 class="title">Nota</h1>
+
+    </ion-header-bar>
+    <ion-content class="content-container">
+        <form ng-submit="saveOrUpdateNote()" class="custom-form">
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Título</span>
+                <input class="full" type="text" ng-model="note.title" ng-keypress="closeKeyboard($event)" ng-keydown="closeKeyboard($event)" ng-disabled="modifyRight()">
+            </label>
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Descrpción</span>
+                <textarea ng-model="note.body" ng-keypress="closeKeyboard($event)" ng-keydown="closeKeyboard($event)" ng-disabled="modifyRight()"></textarea>
+            </label>
+
+            <div class="button-container">
+                <button class="gradient-bg-button" type="submit">Guardar</button>
+                <button class="gradient-bg-button" type="button" ng-click="deleteNote()" ng-if="note.id != null && !modifyRight()" style="margin-top: 20px;">Eliminar nota</button>
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>

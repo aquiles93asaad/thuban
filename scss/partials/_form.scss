@@ -1,0 +1,228 @@
+body {
+    form.custom-form {
+        padding: $distance-m 0;
+
+        .item.item-input {
+            border: none;
+            margin: 0;
+            padding: 0;
+            margin-bottom: $distance-m;
+            display: block;
+            background-color: transparent;
+
+            .input-label {
+                display: block;
+                padding-bottom: $distance-2x-s;
+                color: $main-color-alternate-2;
+
+                &.big-text {
+                    font-size: $font-size-2x-l;
+                }
+            }
+
+            &.item-floating-label {
+                .input-label {
+                    height: 0;
+                    -webkit-transition: 0.15s ease-in, top 0.2s linear;
+                    -moz-transition: 0.15s ease-in, top 0.2s linear;
+                    -ms-transition: 0.15s ease-in, top 0.2s linear;
+                    -o-transition: 0.15s ease-in, top 0.2s linear;
+                    transition: 0.15s ease-in, top 0.2s linear;
+
+                    &.has-input {
+                        height: auto;
+                    }
+                }
+
+                input {
+                    border: none;
+                    border-bottom: 2px solid $main-color-alternate-2;
+                    padding: $distance-2x-s $distance-x-s !important;
+                    line-height: $distance-3x-l;
+                    height:$distance-3x-l;
+                    font-size: $font-size-l;
+                    display: block;
+                    border-radius: 0;
+                    background-color: transparent;
+
+                    + div {
+                        width: 0;
+                        height: 0;
+                        background-color: $secondary-color;
+                        @include custom-transition(width, 400ms, ease);
+                        @include custom-transition(height, 400ms, ease);
+                    }
+
+                    &:focus {
+                        border-bottom-color: $main-color;
+
+                        + div {
+                            width: 100%;
+                            height: 2px;
+                        }
+                    }
+                }
+            }
+
+            &.radius-input {
+                box-shadow: 1px 2px 5px 0.5px rgba(0, 0, 0, 0.26);
+                border-radius: $radius-px;
+                margin-bottom: $distance-l;
+
+                input {
+                    border-bottom: none;
+                    background-color: $light-blue-1;
+                    border-radius: $radius-px;
+                    color: $dark-grey;
+                    text-align: center;
+                    height: $distance-5x-l;
+                    line-height: $distance-5x-l;
+                    border: none;
+                }
+            }
+
+            .relative-parent {
+                i {
+                    @extend .vertical-centered;
+                    color: $main-color-alternate-2;
+                    font-size: $font-size-2x-l;
+                    right: $distance-s;
+                }
+            }
+
+            input,
+            textarea,
+            .fake-select {
+                margin: 0;
+                border-radius: $distance-2x-s;
+                border: 1px solid $main-color-alternate-2;
+                background-color: $light;
+                padding: $distance-2x-s;
+                height: $distance-x-l;
+                font-size: $font-size-m;
+
+
+                &[type="date"] {
+                    line-height: $distance-m;
+                }
+
+                &[disabled] {
+                    background-color: $disabled !important;
+                    cursor: not-allowed !important;
+                }
+            }
+
+            input {
+                line-height: $distance-x-l;
+            }
+
+            textarea {
+                height: 120px;
+                line-height: $distance-m;
+            }
+
+            .fake-select {
+                line-height: $distance-m;
+                text-align: left;
+            }
+
+            select {
+                &.my-select2 {
+                    display: none;
+
+                    + .select2-container {
+                        .select2-selection {
+                            height: $distance-x-l;
+                            padding: $distance-2x-s;
+                        }
+                    }
+
+                    &.search-criteria {
+                        + .select2-container {
+                            .select2-selection {
+                                text-align: center;
+
+                                .select2-selection__rendered{
+                                    text-align: center;
+                                    font-size: $font-size-x-l;
+                                    display: inline-block;
+                                    line-height: $font-size-3x-l;
+                                    font-weight: 600;
+                                }
+
+                                .select2-selection__arrow {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .checkbox {
+                padding-left: 0;
+                margin-bottom: 0;
+
+                label {
+                    padding-left: 0;
+                    margin-bottom: 0;
+
+                    input[type="checkbox"] {
+                        width: 20px;
+                        height: 20px;
+
+                        &::before {
+                            margin-top: -6px;
+                            margin-left: -6px;
+                            border-radius: 4px;
+                            width: 20px;
+                            height: 21px;
+                        }
+
+                        &::after {
+                            top: 20%;
+                            left: 13%;
+                        }
+                    }
+                }
+            }
+        }
+
+        .full {
+            max-width: none;
+            width: 100%;
+        }
+
+        .checkbox {
+            display: block;
+            padding: 0;
+            padding-left: $distance-2x-s;
+            margin-bottom: $distance-m;
+
+            label {
+                font-size: $font-size-x-l;
+                color: $main-color-alternate-2;
+
+                span {
+                    @extend .vertical-centered;
+                    left: $distance-3x-l;
+                    display: block;
+                }
+
+                input {
+                    display: inline-block;
+                    vertical-align: middle;
+
+                    &:focus {
+                        outline: none;
+                    }
+
+                    &:checked:before {
+                        background: $main-color-alternate-2;
+                        border-color: $main-color-alternate-2;
+                    }
+                }
+            }
+        }
+    }
+}

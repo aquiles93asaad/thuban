@@ -1,0 +1,41 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-stable">
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeAddResourceModal()">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <h1 class="title">Modificar recurso adjunto</h1>
+
+    </ion-header-bar>
+    <ion-content class="content-container" style="padding-top: 20px;">
+        <div class="button-container" ng-if="!isIOS">
+            <button class="gradient-bg-button" ng-click="chooseFile()">
+                Desde Carpetas
+                <i class="fa fa-folder" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="button-container">
+            <button class="gradient-bg-button" ng-click="takePicture()">
+                Desde Cámara
+                <i class="fa fa-camera" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="button-container clearfix" ng-show="resource.isAdded">
+            <button class="gradient-bg-button pull-right" style="width: 20%;" ng-click="cancelResource()">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="image-container top-margin" ng-show="resource.showImage">
+            <img id="resource-image">
+        </div>
+        <div class="resource-info clearfix" ng-show="resource.showName">
+            <div class="resource-icon">
+                <i aria-hidden="true" resource-icon></i>
+            </div>
+            <span>Nombre: <strong>{{resource.name}}</strong></span>
+            <span>Tamaño: <strong>{{resource.size | number:2 }} KB</strong></span>
+        </div>
+    </ion-content>
+</ion-modal-view>

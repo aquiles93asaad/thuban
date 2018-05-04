@@ -1,0 +1,62 @@
+.nav-bar-container,
+.modal {
+    .bar {
+        &.bar-header {
+            height: $distance-5x-l;
+            background-image: none;
+            @include linear-gradient-3-colors(top, to bottom, $main-color, 0%, $main-color-alternate, 50%, $main-color-alternate-2, 100%);
+            background: -webkit-gradient(left top, left bottom, color-stop(0%, $main-color), color-stop(50%, $main-color-alternate), color-stop(100%, $main-color-alternate-2));
+            box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.37);
+            border: none;
+
+            .button {
+                color: $secondary-color;
+                @include custom-transition(transform, 400ms, ease);
+                @include rotate(0deg);
+
+                &.open {
+                	@include rotate(180deg);
+                }
+
+                &:before {
+                    font-size: $font-size-7x-l;
+                }
+
+                &.ion-navicon-round {
+                    display: block !important;
+
+                    &.hide {
+                        display: none !important;
+                    }
+                }
+
+                &.back-button {
+                    &.hide {
+                        & + .buttons-left {
+                            .button-icon {
+                                display: block !important;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .title {
+                width: 100%;
+                left: 0 !important;
+                right: 0 !important;
+                margin: 0;
+                text-align: center;
+                height: $distance-5x-l;
+                line-height: $distance-5x-l;
+                color: $light;
+                font-size: $font-size-2x-l;
+
+                img {
+                    height: 90%;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+<ion-view cache-view="false">
+    <ion-content class="content-container no-padding">
+        <div class="content-header breadcrumbs">
+            <h3>Bandeja Thuban: {{trayName}} <span>({{totalItemsCount}})</span></h3>
+        </div>
+        <ion-list class="items-list">
+            <ion-item class="list-item tray" ng-repeat="thubanTray in trays" item-render-buffer="" ui-sref="app.traysItemsList({trayName: thubanTray.trayName})">
+                <div class="resource-icon has-resource vertical-centered">
+                    <span>T</span>
+                </div>
+                <div class="name" ng-if="!thubanTray.hasContent">
+                    {{thubanTray.trayName}}
+                </div>
+                <div class="name" ng-if="thubanTray.hasContent">
+                    {{thubanTray.trayName}} ({{thubanTray.count}})
+                </div>
+                <i class="fa fa-chevron-right static-icon" aria-hidden="true"></i>
+            </ion-item>
+            <ion-item class="list-item" ng-repeat="item in items" item-render-buffer="" ui-sref="app.item({documentId: item.id})">
+                <div class="name tray-item-name">
+                    {{item.name}}
+                </div>
+                <i class="fa fa-chevron-right static-icon" aria-hidden="true"></i>
+            </ion-item>
+        </ion-list>
+        <div class="absolute-centered no-results-container" ng-if="noResultsMessage()">
+            <span>La bandeja seleccionada no contiene documentos.</span>
+        </div>
+        <ion-infinite-scroll ng-if="moreItemsCanBeLoaded()" on-infinite="loadMoreItems()" distance="3%" immediate-check="false"></ion-infinite-scroll>
+    </ion-content>
+</ion-view>

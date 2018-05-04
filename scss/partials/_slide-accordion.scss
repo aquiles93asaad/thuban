@@ -1,0 +1,113 @@
+.slide-accordion {
+    @include custom-transition(all, 400ms, ease-in-out);
+    overflow-y: hidden;
+
+    .ac-header {
+        @extend .relative-parent;
+
+        .icon-container {
+            @extend .vertical-centered;
+            right: $distance-2x-s;
+            color: $main-color-alternate-2;
+            font-size: $font-size-3x-l;
+
+            i {
+                @include custom-transition(transform, 400ms, ease);
+                @include rotate(0deg);
+            }
+        }
+    }
+
+    .ac-body {
+        width: 100%;
+
+        .ac-body-item {
+            padding: $distance-2x-s $distance-x-s;
+            font-size: $font-size-m;
+            white-space: normal;
+        }
+
+        .button-container {
+            margin: 0;
+            padding: 0 $distance-x-s;
+
+            button {
+                height: $distance-2x-l;
+                padding: 0;
+
+                &.icon-container {
+                    @extend .relative-parent;
+
+                    i {
+                        color: $secondary-color;
+                        font-size: $font-size-m;
+                    }
+                }
+            }
+        }
+    }
+
+    &.not-in-list {
+        height: 40px;
+        padding: 0;
+
+        .ac-header {
+            padding: $distance-x-s 0;
+            font-size: $font-size-x-l;
+            line-height: $distance-m;
+            color: $main-color-alternate-2;
+        }
+
+        &.open {
+            .ac-header {
+                .icon-container {
+                    i {
+                        @include rotate(-180deg);
+                    }
+                }
+            }
+
+            .ac-body {
+                height: auto;
+            }
+        }
+    }
+
+    &.in-list {
+        height: 60px;
+        background-color: $grey;
+
+        > .ac-body {
+            background-color: $grey;
+
+            > .ac-body-item {
+                padding: 0;
+                background-color: $grey;
+                font-size: $font-size-x-l;
+
+                &.final {
+                    padding: $distance-x-s $distance-x-l;
+                }
+            }
+        }
+
+        div.ac-header {
+            padding: $distance-s;
+            background-color: $grey;
+        }
+
+        &.open {
+            > .ac-header {
+                .icon-container {
+                    i {
+                        @include rotate(90deg);
+                    }
+                }
+            }
+        }
+
+        &.list-item.item-complex {
+            overflow: hidden;
+        }
+    }
+}

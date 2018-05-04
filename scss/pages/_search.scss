@@ -1,0 +1,76 @@
+body {
+    form.custom-form {
+        &.search-form {
+            .or-criteria-container {
+                margin-bottom: $distance-m;
+                margin-top: $distance-m;
+
+                .radio-inline {
+                    width: 50%;
+                    display: block;
+                    float: left;
+                    text-align: center;
+                    font-size: $font-size-l;
+                    color: $main-color-alternate-2;
+                    margin: 0;
+
+                    input[type="radio"] {
+                        vertical-align: middle;
+                        -webkit-appearance: none;
+
+                        &:after {
+                            content: '';
+                            top: 0;
+                            position: relative;
+                            display: inline-block;
+                            width: $distance-s;
+                            height: $distance-s;
+                            border-radius: $distance-s;
+                            box-shadow: inset 0px 0px 3px 0px $main-color-alternate-2;
+                            border: 1px solid $dark;
+                        }
+
+                        &:checked:after {
+                            background-color: $main-color-alternate-2;
+                            box-shadow: inset 0px 0px 0px 2px $grey;
+                        }
+                    }
+                }
+            }
+
+            .fields-container {
+                .field-container {
+                    span.full {
+                        display: block;
+                        color: $main-color-alternate-2;
+                        padding-bottom: $distance-2x-s;
+                        font-size: $font-size-l;
+                    }
+
+                    .item.item-input {
+                        width: 85%;
+                        float: left;
+
+                        &.search-criteria {
+                            input,
+                            select,
+                            .fake-select,
+                            .select2-selection {
+                                background-color: $search-criteria;
+                            }
+                        }
+
+                        input[type="date"] {
+                            line-height: $distance-m;
+                        }
+
+                        &.criteria-select {
+                            width: 12%;
+                            margin-right: 3%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

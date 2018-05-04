@@ -1,0 +1,26 @@
+<ion-content cache-view="false" class="login-content-page">
+    <div class="login-bg-container relative-parent">
+        <img class="config-icon" ng-src="img/icons/config-icon.png" ng-click="openLoginConfigurationModal()">
+        <div class="login-bg-inner-container">
+            <div class="logo-container">
+                <img ng-src="img/logo-white-1.png">
+            </div>
+            <form ng-submit="logIn()" class="custom-form">
+                <div class="list">
+                    <label class="item item-input radius-input">
+                        <input type="text" placeholder="Usuario" ng-model="loginForm.user" ng-keypress="closeKeyboard($event)" ng-keydown="closeKeyboard($event)">
+                    </label>
+                    <label class="item item-input radius-input">
+                        <input type="password" placeholder="Contraseña" ng-model="loginForm.password" ng-keypress="closeKeyboard($event)" ng-keydown="closeKeyboard($event)">
+                    </label>
+                    <div class="button-container">
+	                    <button class="radius-button large-button" type="submit">Ingresar</button>
+	                </div>
+                </div>
+            </form>
+        </div>
+        <div class="company-container">
+            <img ng-src="img/company-name-white.png">
+        </div>
+    </div>
+</ion-content>
